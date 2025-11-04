@@ -1,6 +1,6 @@
-# Video Frame Brightness to Audio Waveform
-#
-# By Jeff Geerling, with code from Google AI, in October 2025.
+"""Video Frame Brightness to Audio Waveform"""
+
+# By Jeff Geerling, with code from Google AI, made in October 2025.
 #
 # The bugs are probably my own doing. The egregious ones, AI.
 #
@@ -14,23 +14,25 @@
 #
 # # Run the script
 # (if needed, activate the virtual environment:) source .venv/bin/activate
-# python3 video-to-audio.py your_video.mp4 [--output your_audio.wav]
+# python3 video_to_audio.py your_video.mp4 [--output your_audio.wav]
 # ```
 #
 # Note: cv2 import takes a while, that is normal.
 
-import cv2
-import numpy as np
-from scipy.io.wavfile import write
-from scipy.signal import resample
 import argparse
 import sys
-from tqdm import tqdm
+import cv2  # pylint: disable=import-error
+import numpy as np  # pylint: disable=import-error
+from scipy.io.wavfile import write  # pylint: disable=import-error
+from scipy.signal import resample  # pylint: disable=import-error
+from tqdm import tqdm  # pylint: disable=import-error
 
 def gamma_correction(image, gamma=2.2):
+    """Correct gamma for a given video frame"""
+
     # build a lookup table mapping the pixel values [0, 255] to their adjusted gamma values
-    invGamma = 1.0 / gamma
-    table = np.array([((i / 255.0) ** invGamma) * 255 for i in np.arange(0, 256)]).astype("uint8")
+    inv_gamma = 1.0 / gamma
+    table = np.array([((i / 255.0) ** inv_gamma) * 255 for i in np.arange(0, 256)]).astype("uint8")
 
     # apply gamma correction using the lookup table
     return cv2.LUT(image, table)
@@ -44,7 +46,7 @@ def get_video_brightness(video_path):
         video_path (str): The path to the video file.
 
     Returns:
-        tuple: A tuple containing a list of floats for average brightness and the video's frame rate.
+        tuple: A tuple with a list of floats for average brightness and the video's frame rate.
     """
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
@@ -119,7 +121,7 @@ def create_and_save_wav(brightness_levels, frame_rate, output_path='brightness_a
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Extracts video frame brightness levels and converts them into a WAV audio file.",
+        description="Converts a video into a WAV audio file, based on average frame luminance.",
         formatter_class=argparse.RawTextHelpFormatter
     )
 
@@ -151,6 +153,6 @@ if __name__ == "__main__":
         else:
             print("Processing stopped. Could not get brightness data.")
             sys.exit(1)
-    except Exception as e:
+    except Exception as e:  # pylint: disable=broad-exception-caught
         print(f"An error occurred: {e}")
         sys.exit(1)

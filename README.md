@@ -1,5 +1,7 @@
 # Audio from SloMo Video
 
+[![Pylint](https://github.com/geerlingguy/audio-from-slow-motion-video/actions/workflows/pylint.yml/badge.svg)](https://github.com/geerlingguy/audio-from-slow-motion-video/actions/workflows/pylint.yml)
+
 Attempts at reproducing sound using video frames of hot dog plasma arcing.
 
 This project stems from a collaboration between Geerling Engineering and Slow Mo Guys:
@@ -45,10 +47,19 @@ I also put the video file into Final Cut Pro and further processed it to isolate
 
 > Note: For real-world footage, especially from a high-speed camera, I found the easiest way to isolate bright spots (like plasma) from the rest of the footage was to add a [luma keyer](https://support.apple.com/guide/final-cut-pro/use-the-luma-keyer-effect-ver40b0028e/mac), and filter out almost everything but the brightest spots. YMMV if you try this technique with closeup footage of an incredibly bright object like the sun.
 
-Then take the processed video file, and extract brightness values as a waveform:
+Then take the processed video file, and extract brightness values as a waveform using the `video_to_audio.py` Python script:
 
 ```
-python3 video-to-audio.py your_video_file.mp4
+# Create and activate venv with uv
+uv venv
+source .venv/bin/activate
+
+# Install dependencies
+uv pip install opencv-python numpy scipy tqdm
+
+# Run the script
+# (if needed, activate the virtual environment:) source .venv/bin/activate
+python3 video_to_audio.py your_video.mp4 [--output your_audio.wav]
 ```
 
 The resulting WAV file will need some cleanup.
