@@ -64,3 +64,9 @@ If you slowed down the original audio file, you need to speed it back up by the 
 ```
 sox input.aiff output.aiff speed 125.0
 ```
+
+## License
+
+GPLv3, unless otherwise indicated.
+
+Some of the Python code was written with the aid of Google's search bar AI thingie, and I have _no clue_ how to license the lines affected by the Google responses.
