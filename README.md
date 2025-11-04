@@ -50,17 +50,11 @@ I also put the video file into Final Cut Pro and further processed it to isolate
 Then take the processed video file, and extract brightness values as a waveform using the `video_to_audio.py` Python script:
 
 ```
-# Create and activate venv with uv
-uv venv
-source .venv/bin/activate
-
-# Install dependencies
-uv pip install opencv-python numpy scipy tqdm
-
-# Run the script
-# (if needed, activate the virtual environment:) source .venv/bin/activate
-python3 video_to_audio.py your_video.mp4 [--output your_audio.wav]
+# Run the script with uv
+uv run video_to_audio.py your_video.mp4 [--output your_audio.wav]
 ```
+
+> Note: If you've never used `uv`, you can install it with `pip install uv`. Or if you know how to manage your own Python environment, you can install dependencies and run the script manually.
 
 The resulting WAV file will need some cleanup.
 
