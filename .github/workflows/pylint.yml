@@ -26,4 +26,4 @@ jobs:
 
     - name: Analyze the code with pylint
       run: |
-        uv run pylint video_to_audio.py
+        uv run pylint --generated-members=cv2.* video_to_audio.py

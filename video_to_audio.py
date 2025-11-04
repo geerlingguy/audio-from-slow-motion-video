@@ -8,8 +8,8 @@
 
 import argparse
 import sys
-from cv2 import cv2  # pylint: disable=import-error
-from numpy import numpy  # pylint: disable=import-error
+import cv2  # pylint: disable=import-error
+import numpy  # pylint: disable=import-error
 from scipy.io.wavfile import write  # pylint: disable=import-error
 from scipy.signal import resample  # pylint: disable=import-error
 from tqdm import tqdm  # pylint: disable=import-error
@@ -19,7 +19,7 @@ def gamma_correction(image, gamma=2.2):
 
     # build a lookup table mapping the pixel values [0, 255] to their adjusted gamma values
     inv_gamma = 1.0 / gamma
-    table = numpy.array([((i / 255.0) ** inv_gamma) * 255 for i in numpy.arange(0, 256)]).astype("uint8")
+    table = numpy.array([((i / 255.0) ** inv_gamma) * 255 for i in numpy.arange(0, 256)]).astype("uint8")  # pylint: disable=line-too-long
 
     # apply gamma correction using the lookup table
     return cv2.LUT(image, table)
