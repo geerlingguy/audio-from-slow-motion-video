@@ -6,14 +6,14 @@ Attempts at reproducing sound using video frames of hot dog plasma arcing.
 
 This project stems from a collaboration between Geerling Engineering and Slow Mo Guys:
 
-  - Geerling Engineering: [TODO](TODO)
+  - Geerling Engineering: [Hot dog plasma microphone](https://www.youtube.com/watch?v=nMF3Plt-mCY)
   - Slow Mo Guys: [TODO](TODO)
 
 The repository includes a Arduino Sketch meant for testing the theory of audio-from-video, using an LED that blinks more brightly in response to the amplitude of an audio waveform.
 
 It also includes a Python script which attempts to turn a video into audio waveforms, by converting frame brightness to sound amplitude.
 
-Some pre- and post-processing steps are required. See the Geerling Engineering video [TODO](TODO) for an overview of the process with some real-world footage of a hot dog, grounded to an AM radio tower, generating bright plasma arcs in response to the amplitude-modulated carrier wave.
+Some pre- and post-processing steps are required. See the Geerling Engineering video [Hot dog plasma microphone](https://www.youtube.com/watch?v=nMF3Plt-mCY) for an overview of the process with some real-world footage of a hot dog, grounded to an AM radio tower, generating bright plasma arcs in response to the amplitude-modulated carrier wave.
 
 ## 1 - drive LED brightness based on sound level
 
