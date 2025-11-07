@@ -7,7 +7,7 @@ Attempts at reproducing sound using video frames of hot dog plasma arcing.
 This project stems from a collaboration between Geerling Engineering and Slow Mo Guys:
 
   - Geerling Engineering: [Hot dog plasma microphone](https://www.youtube.com/watch?v=nMF3Plt-mCY)
-  - Slow Mo Guys: [Hot Dog vs Radio Tower at 200,000 FPS](https://www.youtube.com/watch?v=Tz8V1p--2no)
+  - Slow Mo Guys: [Hot Dog vs Radio Tower at 200,000 FPS](https://www.youtube.com/watch?v=L1c7Nu3iR8c)
 
 The repository includes a Arduino Sketch meant for testing the theory of audio-from-video, using an LED that blinks more brightly in response to the amplitude of an audio waveform.
 
